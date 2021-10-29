@@ -16,7 +16,7 @@ AlloyX creates diversified and liquid pooled investment tokens. AlloyX handles i
 
 This repository contains the frontend for the investor experience. We have integrated with @celo-tools/use-contractkit to enable wallet access. From this interface, investors can browse and purchase Pooled Investments on the Celo network.
 
-![alt text](https://storage.googleapis.com/cauris_deep_dive/alloyx_mobile4.png)
+![alt text](https://storage.googleapis.com/cauris_deep_dive/alloyx_mobile4.png?t=1)
 
 ## Running the app
 
