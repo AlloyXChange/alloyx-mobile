@@ -5,12 +5,32 @@ import Home from "./Home";
 import PendingPurchase from "./PendingPurchase";
 import PurchaseConfirmation from "./PurchaseConfirmation";
 
+import {
+	ContractKitProvider,
+	useContractKit,
+} from "@celo-tools/use-contractkit";
+import "@celo-tools/use-contractkit/lib/styles.css";
+function WrappedApp() {
+	return (
+		<ContractKitProvider
+			dapp={{
+				name: "AlloyX",
+				description: "AllyX",
+				url: "https://alloyx.org",
+			}}
+		>
+			<App />
+		</ContractKitProvider>
+	);
+}
+
 function App() {
+	const { address, connect } = useContractKit();
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Home connect={connect} address={address} />
 				</Route>
 
 				<Route exact path="/pendingPurchase">
@@ -24,4 +44,4 @@ function App() {
 	);
 }
 
-export default App;
+export default WrappedApp;

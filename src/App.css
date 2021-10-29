@@ -2,15 +2,168 @@
 	text-align: center;
 }
 
+.modal-container {
+	overflow: hidden;
+}
+
+.modalContainer {
+	padding-top: 20px;
+	background-color: #1f1840;
+	font-family: Arial, sans-serif;
+	overflow: hidden;
+}
+
+.modalIcon {
+	text-align: center;
+}
+
+.modalSymbol {
+	color: white;
+	text-align: center;
+}
+
+.modalName {
+	color: white;
+	opacity: 50%;
+	text-align: center;
+}
+
+.modalTitle {
+	color: white;
+	opacity: 50%;
+	text-align: center;
+}
+
+.modalChart {
+	padding-left: 30px;
+	padding-right: 30px;
+}
 .platform {
 	/* background: linear-gradient( #671FF3 , #4C65F9 ); */
-	background-color: #211b44;
+	background-color: #181330;
+	width: 100%;
+	align-content: center;
+}
+
+.btn-hover {
+	width: 109px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	cursor: pointer;
+	margin: 10px;
+	height: 32px;
+	text-align: center;
+	border: none;
+	/* background-size: 300% 100%; */
+
+	border-radius: 50px;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+modal-backdrop {
+	background-color: transparent !important;
+}
+
+.btn-hover.color-1 {
+	background-image: linear-gradient(#f606ff, #637eea);
+	/* box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
+}
+
+.modalButton {
+	text-align: center;
+}
+
+.modalDetails {
+	text-align: center;
+}
+
+.modalTable {
+	width: 92%;
+}
+
+.modalMarketValue {
+	color: white;
+	font-family: Arial, sans-serif;
+	font-weight: bolder;
+}
+
+.modalNav {
+	color: white;
+	font-family: Arial, sans-serif;
+	padding-left: 30px;
+}
+
+.modalCell {
+	text-align: right;
+}
+
+.whiteSeparator {
+	color: white;
+	margin-left: 30px;
+	margin-right: 30px;
+	opacity: 50%;
+	text-align: center;
+}
+
+.modalMarket {
+	color: white;
+	font-family: Arial, sans-serif;
+	padding-left: 30px;
+}
+
+.tokenTable {
+	width: 100%;
+}
+
+.tokenCard {
+	height: 70px;
+	margin-bottom: 20px;
+	background: #1f1840 !important;
+	vertical-align: middle;
+}
+
+.tokenIconDiv {
+	padding-left: 5px;
+	width: 40px;
+}
+
+.tokenIcon {
+	width: 40px;
+	height: 40px;
+}
+
+.tokenTitle {
+	color: white;
+	text-align: left;
+	font-family: Arial, sans-serif;
+	opacity: 50%;
+	font-size: 16px;
+}
+
+.tokenSymbol {
+	padding-top: 10px;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
 }
 
 .tagline {
 	color: white;
-	font-size: 12px;
-	text-align: center;
+	font-size: 14px;
+	text-align: left;
+	font-family: Arial, sans-serif;
+}
+
+.header {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
 }
 
 .welcomeTable {
@@ -35,10 +188,20 @@
 .pendingLogoCell {
 	text-align: center;
 }
+
+.connectedAddress {
+	color: white;
+	font-size: 12px;
+	text-align: right;
+}
 .smallLogo {
-	height: 40px;
+	height: 60px;
 	pointer-events: none;
 	padding-top: 10px;
+}
+
+.walletToggle {
+	color: white;
 }
 
 .pendingTable {

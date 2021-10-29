@@ -1,0 +1,3 @@
+[submodule "alloyx-smart-contracts"]
+	path = alloyx-smart-contracts
+	url = git@github.com:AlloyXChange/alloyx-smart-contracts.git

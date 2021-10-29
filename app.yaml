@@ -12,5 +12,5 @@ resources:
   memory_gb: 2.5
   disk_size_gb: 10
 env_variables:
-  REACT_APP_API_DOMAIN: "https://caurisbackend.uc.r.appspot.com"
+  REACT_APP_API_DOMAIN: "https://caurisbackend.uc.r.appspot.com/"
   REACT_APP_CELO_NETWORK: "Alfajores"

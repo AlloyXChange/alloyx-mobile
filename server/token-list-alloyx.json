@@ -1,0 +1,136 @@
+{
+	"name": "AlloyX",
+	"tokens": [
+		{
+			"address": "0x24985bDE88F22AbeEc605071efe04B22091fE1d5",
+			"name": "Fintech Innovation",
+			"symbol": "FNTK",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/fntk.png",
+			"nav": "$1.24",
+			"market": "$2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		},
+		{
+			"address": "0x416FB1cEE05CF78b76c5Cae2437deEb08B774cA3",
+			"name": "Emerging sovereign debt",
+			"symbol": "XOFT",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/xoft.png",
+			"nav": "$1.24",
+			"market": "$2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		},
+		{
+			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"name": "Green Energy",
+			"symbol": "GRNY",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/grny.png",
+			"nav": "$1.24",
+			"market": "$2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		},
+		{
+			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"name": "Plant-based innovation",
+			"symbol": "PLNT",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/plnt.png",
+			"nav": "$1.24",
+			"market": "$2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		},
+		{
+			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"name": "Space Exploration",
+			"symbol": "RCKT",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/rckt.png",
+			"nav": "$1.24",
+			"market": "$2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		},
+		{
+			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"name": "Cloud Infrastructure",
+			"symbol": "CLDF",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/cldf.png",
+			"nav": "1.24",
+			"market": "2.34",
+			"performance": [
+				["Month", "NAV", "Market"],
+				["Jan", 1, 1.2],
+				["Feb", 1.2, 1.3],
+				["Mar", 1.1, 1.05],
+				["April", 1.7, 1.4],
+				["May", 1.6, 1.5]
+			]
+		}
+	],
+	"version": {
+		"major": 2,
+		"minor": 1,
+		"patch": 1
+	}
+}
