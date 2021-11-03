@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 .App {
 	text-align: center;
 }
@@ -15,6 +27,105 @@
 
 .modalIcon {
 	text-align: center;
+}
+
+.backButton {
+	width: 40px;
+	position: fixed;
+	top: 10px;
+	left: 5px;
+}
+
+.portfolioHeaderTable {
+	width: 100%;
+	margin-top: 50px !important;
+}
+
+.portfolioBalanceTable {
+	width: 20%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.portfolioAllTimeTable {
+	width: 9=80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.portfolioPaymentsTable {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.portfolioPayments {
+	color: white;
+}
+
+.portfolioBalanceCell {
+	text-align: left;
+}
+
+.portfolioHeaderCell {
+	text-align: center;
+	align-content: center;
+}
+
+.float-container {
+	display: flex;
+}
+
+.portfolioBalance {
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.portfolioAlltime {
+	color: #cc28f9;
+	opacity: 50%;
+	font-size: 20px;
+}
+
+.portfolioAllTimeText {
+	color: grey;
+	font-size: 20px;
+}
+
+.portfolioBalanceType {
+	color: white;
+	padding-top: 10px;
+}
+
+.portfolioHeader {
+	color: white;
+	font-size: 25px;
+}
+
+.successSummary {
+	font-weight: bolder;
+}
+
+.successResults {
+	text-align: center;
+	color: white;
+	font-family: Arial, sans-serif;
+}
+.successButtonCell {
+	text-align: center;
+	padding-bottom: 50px;
+}
+.successTable {
+	width: 100%;
+}
+
+.successDiv {
+	text-align: center;
+}
+
+.successImage {
+	width: 70%;
 }
 
 .modalSymbol {
@@ -37,6 +148,10 @@
 .modalChart {
 	padding-left: 30px;
 	padding-right: 30px;
+}
+
+.portfolioChart {
+	height: 400px;
 }
 .platform {
 	/* background: linear-gradient( #671FF3 , #4C65F9 ); */
@@ -94,6 +209,11 @@ modal-backdrop {
 	width: 25px;
 }
 
+.backButtonStyle {
+	background: none;
+	border: none;
+}
+
 .closeStyle {
 	background: none;
 	border: none;
@@ -101,7 +221,7 @@ modal-backdrop {
 
 .checkoutTable {
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 20px;
 	padding-right: 20px;
 }
 
@@ -161,6 +281,20 @@ modal-backdrop {
 	width: 100%;
 }
 
+.purchaseInputCell {
+	text-align: right !important;
+	color: white;
+}
+
+.purchaseInput {
+	background-color: transparent !important;
+	border: 0 !important;
+	color: white !important;
+	text-align: right;
+	font-family: Arial, sans-serif;
+	font-size: 20px !important;
+}
+
 .tokenCard {
 	height: 70px;
 	margin-bottom: 20px;
@@ -175,11 +309,13 @@ modal-backdrop {
 
 .stableTokenTable {
 	margin-top: 10px;
+	width: 100%;
 }
 
 .stableTokenIconDiv {
 	padding-left: 5px;
 	width: 40px;
+	padding-right: 10px;
 }
 
 .tokenIcon {
@@ -192,7 +328,7 @@ modal-backdrop {
 	text-align: left;
 	font-family: Arial, sans-serif;
 	opacity: 50%;
-	font-size: 16px;
+	font-size: px;
 }
 
 .tokenSymbol {

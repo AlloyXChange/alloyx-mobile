@@ -11,6 +11,7 @@ import {
 } from "@celo-tools/use-contractkit";
 import "@celo-tools/use-contractkit/lib/styles.css";
 import Checkout from "./Checkout";
+import Portfoliio from "./Portfoliio";
 function WrappedApp() {
 	return (
 		<ContractKitProvider
@@ -41,6 +42,9 @@ function App() {
 				</Route>
 				<Route exact path="/purchaseConfirmed">
 					<PurchaseConfirmation />
+				</Route>
+				<Route exact path="/portfolio">
+					<Portfoliio />
 				</Route>
 			</Switch>
 		</BrowserRouter>

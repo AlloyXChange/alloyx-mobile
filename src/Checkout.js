@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Card } from "react-bootstrap";
+import { Container, Card, Modal, Form } from "react-bootstrap";
 import dataService from "./services/DataService";
 import { withRouter } from "react-router-dom";
 import swapIcon from "./assets/swapIcon.png";
@@ -10,12 +10,9 @@ class Checkout extends Component {
 		super(props);
 		let search = window.location.search;
 		this.close = this.close.bind(this);
+		this.submit = this.submit.bind(this);
 
-		let params = new URLSearchParams(search);
-		let name = String(params.get("name"));
-		let uri = String(params.get("uri"));
-		let symbol = String(params.get("symbol"));
-		let address = String(params.get("name"));
+		this.onStableCoinChange = this.onStableCoinChange.bind(this);
 
 		this.state = {
 			showModal: false,
@@ -24,15 +21,32 @@ class Checkout extends Component {
 			tokens: [],
 			tokenViews: [],
 			selectedToken: {},
-			logoURI: uri,
-			symbol: symbol,
-			address: address,
-			name: name,
+			logoURI: this.props.token.logoURI,
+			symbol: this.props.token.symbol,
+			address: this.props.token.address,
+			name: this.props.token.name,
+			onCheckout: this.props.submit,
+			showModal: false,
+
+			stableCoinValue: 0,
+			etTokenValue: 0,
 		};
 	}
 
+	onStableCoinChange(e) {
+		const re = /^[0-9\b]+$/;
+		if (e.target.value === "" || re.test(e.target.value)) {
+			this.setState({ stableCoinValue: e.target.value });
+		}
+	}
+
 	close() {
-		window.location.href = "/";
+		// window.location.href = "/";
+	}
+
+	submit() {
+		// this.setState({ showModal: true });
+		this.state.onCheckout();
 	}
 	render() {
 		return (
@@ -53,6 +67,7 @@ class Checkout extends Component {
 						<Card className="tokenCard" onClick={this.selectCard}>
 							<table class="tokenTable">
 								<col width="60px" />
+								<col width="160px" />
 
 								<tr>
 									<td>
@@ -65,6 +80,16 @@ class Checkout extends Component {
 										<div class="tokenSymbol">{this.state.symbol}</div>
 
 										<div class="tokenTitle">{this.state.name}</div>
+									</td>
+									<td class="purchaseInputCell">
+										{" "}
+										<Form.Group controlId="purchaseStable">
+											<Form.Control
+												className="purchaseInput"
+												type="number"
+												placeholder="0.0"
+											/>
+										</Form.Group>
 									</td>
 								</tr>
 							</table>
@@ -88,18 +113,27 @@ class Checkout extends Component {
 
 									<td>
 										<div class="tokenSymbol">CUSD</div>
-
-										<div class="tokenTitle"></div>
+									</td>
+									<td class="purchaseInputCell">
+										{" "}
+										<Form.Group controlId="purchaseStable">
+											<Form.Control
+												className="purchaseInput text-right"
+												type="number"
+												placeholder="0.0"
+											/>
+										</Form.Group>
 									</td>
 								</tr>
 							</table>
 						</Card>
 						<div class="modalButton">
-							<button onClick={this.checkout} class="btn-hover color-1">
+							<button onClick={this.submit} class="btn-hover color-1">
 								Submit
 							</button>
 						</div>
 					</div>
+					<p></p>
 				</Container>
 			</div>
 		);

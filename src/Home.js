@@ -4,6 +4,8 @@ import logo from "./simpleLogo.png";
 import dataService from "./services/DataService";
 import { withRouter } from "react-router-dom";
 import TokenCard from "./TokenCard";
+import Checkout from "./Checkout";
+import SuccessfulPurchase from "./SuccessfulPurchase";
 const { Chart } = require("react-google-charts");
 
 class Login extends Component {
@@ -14,9 +16,14 @@ class Login extends Component {
 		this.submit = this.submit.bind(this);
 		this.connect = this.connect.bind(this);
 		this.checkout = this.checkout.bind(this);
+		this.startCheckout = this.startCheckout.bind(this);
+		this.goToPortfolio = this.goToPortfolio.bind(this);
 
 		this.state = {
 			showModal: false,
+			showCheckout: false,
+			showSuccessModal: false,
+
 			connect: this.props.connect,
 			address: this.props.address,
 			tokens: [],
@@ -47,28 +54,32 @@ class Login extends Component {
 
 	close() {
 		this.setState({ showModal: false });
+		this.setState({ showCheckout: false });
+		this.setState({ showSuccessModal: false });
 	}
 
 	submit() {
 		window.location.href = "/pendingPurchase";
 	}
 
+	goToPortfolio() {
+		window.location.href = "/portfolio";
+	}
+
 	checkout() {
-		window.location.href =
-			"/checkout?uri=" +
-			this.state.selectedToken.logoURI +
-			"&name=" +
-			this.state.selectedToken.name +
-			"&symbol=" +
-			this.state.selectedToken.symbol +
-			"&address=" +
-			this.state.selectedToken.address;
+		this.setState({ showModal: false });
+		this.setState({ showCheckout: true });
 	}
 
 	connect() {
 		try {
 			this.state.connect();
 		} catch (e) {}
+	}
+
+	startCheckout() {
+		this.setState({ showCheckout: false });
+		this.setState({ showSuccessModal: true });
 	}
 
 	truncate(str, n) {
@@ -87,7 +98,9 @@ class Login extends Component {
 								<img src={logo} alt="" class="smallLogo" />
 							</td>
 							<td class="alignRight">
-								<button class="btn-hover color-1">PORTFOLIO</button>{" "}
+								<button onClick={this.goToPortfolio} class="btn-hover color-1">
+									PORTFOLIO
+								</button>{" "}
 							</td>
 						</tr>
 					</table>
@@ -212,25 +225,30 @@ class Login extends Component {
 									Buy
 								</button>
 							</div>
-							{/* </div> */}
 						</div>
-						{/* <Modal.Header closeButton>
-							<Modal.Title>Buy FINTECH Tokens</Modal.Title>
-						</Modal.Header>
+					</Modal>
 
-						<Modal.Body>Shares</Modal.Body>
-						<Modal.Body>Market Price</Modal.Body>
-						<Modal.Body>Estimated Cost</Modal.Body>
+					<Modal
+						show={this.state.showCheckout}
+						onHide={this.close}
+						animation={true}
+						dialogClassName="modal-container"
+						centered
+					>
+						<Checkout
+							token={this.state.selectedToken}
+							submit={this.startCheckout}
+						/>
+					</Modal>
 
-						<Modal.Footer>
-							<Button
-								className="button-theme button-theme-blue"
-								type="submit"
-								onClick={this.submit}
-							>
-								Confirm
-							</Button>
-						</Modal.Footer> */}
+					<Modal
+						show={this.state.showSuccessModal}
+						onHide={this.close}
+						animation={true}
+						dialogClassName="modal-container"
+						centered
+					>
+						<SuccessfulPurchase />
 					</Modal>
 				</Container>
 			</div>
