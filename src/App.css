@@ -76,12 +76,42 @@ modal-backdrop {
 	text-align: center;
 }
 
+.swapDiv {
+	text-align: center;
+	margin-top: -5px;
+	padding-bottom: 5px;
+}
+
 .modalDetails {
 	text-align: center;
 }
 
 .modalTable {
 	width: 92%;
+}
+
+.closeButton {
+	width: 25px;
+}
+
+.closeStyle {
+	background: none;
+	border: none;
+}
+
+.checkoutTable {
+	width: 100%;
+	margin-top: 50px;
+	padding-right: 20px;
+}
+
+.checkoutTokens {
+	padding-top: 40px;
+}
+
+.closeCell {
+	text-align: right;
+	padding-right: 10px;
 }
 
 .modalMarketValue {
@@ -96,6 +126,19 @@ modal-backdrop {
 	padding-left: 30px;
 }
 
+.swapIcon {
+	width: 75px;
+}
+
+.checkoutHeader {
+	color: white;
+	width: 100%;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	padding-top: 10px;
+	font-size: 25px;
+	font-weight: normal;
+}
 .modalCell {
 	text-align: right;
 }
@@ -126,6 +169,15 @@ modal-backdrop {
 }
 
 .tokenIconDiv {
+	padding-left: 5px;
+	width: 40px;
+}
+
+.stableTokenTable {
+	margin-top: 10px;
+}
+
+.stableTokenIconDiv {
 	padding-left: 5px;
 	width: 40px;
 }

@@ -13,6 +13,7 @@ class Login extends Component {
 		this.close = this.close.bind(this);
 		this.submit = this.submit.bind(this);
 		this.connect = this.connect.bind(this);
+		this.checkout = this.checkout.bind(this);
 
 		this.state = {
 			showModal: false,
@@ -50,6 +51,18 @@ class Login extends Component {
 
 	submit() {
 		window.location.href = "/pendingPurchase";
+	}
+
+	checkout() {
+		window.location.href =
+			"/checkout?uri=" +
+			this.state.selectedToken.logoURI +
+			"&name=" +
+			this.state.selectedToken.name +
+			"&symbol=" +
+			this.state.selectedToken.symbol +
+			"&address=" +
+			this.state.selectedToken.address;
 	}
 
 	connect() {
@@ -195,7 +208,9 @@ class Login extends Component {
 								</tr>
 							</table>
 							<div class="modalButton">
-								<button class="btn-hover color-1">Buy</button>
+								<button onClick={this.checkout} class="btn-hover color-1">
+									Buy
+								</button>
 							</div>
 							{/* </div> */}
 						</div>

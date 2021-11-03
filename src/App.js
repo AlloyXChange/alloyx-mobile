@@ -10,6 +10,7 @@ import {
 	useContractKit,
 } from "@celo-tools/use-contractkit";
 import "@celo-tools/use-contractkit/lib/styles.css";
+import Checkout from "./Checkout";
 function WrappedApp() {
 	return (
 		<ContractKitProvider
@@ -32,7 +33,9 @@ function App() {
 				<Route exact path="/">
 					<Home connect={connect} address={address} />
 				</Route>
-
+				<Route exact path="/checkout">
+					<Checkout />
+				</Route>
 				<Route exact path="/pendingPurchase">
 					<PendingPurchase />
 				</Route>
