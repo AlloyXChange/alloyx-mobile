@@ -79,7 +79,7 @@ class Checkout extends Component {
 									<td>
 										<div class="tokenSymbol">{this.state.symbol}</div>
 
-										<div class="tokenTitle">{this.state.name}</div>
+										<div class="tokenTitleSmall">{this.state.name}</div>
 									</td>
 									<td class="purchaseInputCell">
 										{" "}

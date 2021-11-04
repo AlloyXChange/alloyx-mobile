@@ -29,6 +29,10 @@ input[type="number"] {
 	text-align: center;
 }
 
+.portfolioRewardTitle {
+	color: white;
+}
+
 .backButton {
 	width: 40px;
 	position: fixed;
@@ -48,7 +52,7 @@ input[type="number"] {
 }
 
 .portfolioAllTimeTable {
-	width: 9=80%;
+	width: 70%;
 	text-align: center;
 	margin: 0 auto;
 }
@@ -85,12 +89,12 @@ input[type="number"] {
 .portfolioAlltime {
 	color: #cc28f9;
 	opacity: 50%;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .portfolioAllTimeText {
 	color: grey;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .portfolioBalanceType {
@@ -150,8 +154,18 @@ input[type="number"] {
 	padding-right: 30px;
 }
 
+.lineBreak {
+	color: grey;
+	opacity: 0.2;
+}
+
+.portfolioDetails {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
 .portfolioChart {
-	height: 400px;
+	/* height: 400px; */
 }
 .platform {
 	/* background: linear-gradient( #671FF3 , #4C65F9 ); */
@@ -302,6 +316,19 @@ modal-backdrop {
 	vertical-align: middle;
 }
 
+.rewardTokenCard {
+	height: 70px;
+	margin-bottom: 00px;
+	background: #1f1840 !important;
+	vertical-align: middle;
+	border: double 2px transparent !important;
+	border-radius: 10px !important;
+	background-image: linear-gradient(#1f1840, #1f1840),
+		radial-gradient(circle at top right, #f606ff, #8067ee, #32c1c5) !important;
+	background-origin: border-box !important;
+	background-clip: content-box, border-box !important;
+}
+
 .tokenIconDiv {
 	padding-left: 5px;
 	width: 40px;
@@ -329,6 +356,41 @@ modal-backdrop {
 	font-family: Arial, sans-serif;
 	opacity: 50%;
 	font-size: px;
+}
+
+.tokenTitleSmall {
+	color: white;
+	text-align: left;
+	font-family: Arial, sans-serif;
+	opacity: 50%;
+	font-size: 14px;
+}
+
+.portfolioTokenTitle {
+	color: white;
+	text-align: left;
+	font-family: Arial, sans-serif;
+	opacity: 50%;
+	font-size: 12px;
+}
+
+.portfolioConvertedBalance {
+	color: white;
+	text-align: right;
+	font-family: Arial, sans-serif;
+	opacity: 50%;
+	font-size: 12px;
+	padding-right: 5px;
+}
+
+.tokenBalance {
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 5px;
+	color: white;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
 }
 
 .tokenSymbol {

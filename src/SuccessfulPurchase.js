@@ -4,13 +4,17 @@ import dataService from "./services/DataService";
 import { withRouter } from "react-router-dom";
 import success from "./assets/success.png";
 import closeButton from "./assets/closeButton.png";
-import Checkout from "./Checkout";
 
 class SuccessfulPurchase extends Component {
 	constructor(props) {
 		super(props);
+		this.checkout = this.checkout.bind(this);
 
 		this.state = {};
+	}
+
+	checkout() {
+		window.location.href = "/portfolio";
 	}
 
 	render() {

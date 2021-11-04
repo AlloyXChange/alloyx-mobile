@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Container, Form, Modal, Button } from "react-bootstrap";
+import { Container, Form, Modal, Card } from "react-bootstrap";
 import backButton from "./assets/backButton.png";
 import dataService from "./services/DataService";
 import { withRouter } from "react-router-dom";
-import TokenCard from "./TokenCard";
 import Checkout from "./Checkout";
 import SuccessfulPurchase from "./SuccessfulPurchase";
+import PortfolioToken from "./PortfolioToken";
+import RewardToken from "./RewardToken";
 const { Chart } = require("react-google-charts");
 
 class Login extends Component {
@@ -14,13 +15,37 @@ class Login extends Component {
 
 		this.close = this.close.bind(this);
 
-		this.state = {};
+		this.state = {
+			tokenViews: [],
+			tokens: [],
+			rewardTokens: [],
+			rewardViews: [],
+		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.loadTokens();
+	}
 
 	close() {
 		window.location.href = "/";
+	}
+
+	async loadTokens() {
+		let tokens = await dataService.getPortfolio();
+		this.setState({ tokens: tokens.tokens });
+		this.setState({ rewardTokens: tokens.reward });
+
+		let views = this.state.tokens.map((token) => (
+			<PortfolioToken data={token} key={token.name} openCard={this.open} />
+		));
+
+		let rewardViews = this.state.rewardTokens.map((token) => (
+			<RewardToken data={token} key={token.name} openCard={this.open} />
+		));
+		this.setState({ rewardViews: rewardViews });
+
+		this.setState({ tokenViews: views });
 	}
 
 	render() {
@@ -130,7 +155,15 @@ class Login extends Component {
 							}}
 						/>
 					</div>
-					Reward
+					<div class="portfolioDetails">
+						<hr class="lineBreak"></hr>
+						<div class="portfolioRewardTitle">Reward</div>
+
+						{this.state.rewardViews}
+
+						<div class="portfolioRewardTitle">Portfolio</div>
+						{this.state.tokenViews}
+					</div>
 				</Container>
 			</div>
 		);

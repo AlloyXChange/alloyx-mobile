@@ -21,6 +21,19 @@ class DataService extends Component {
 				return "error";
 			});
 	}
+
+	async getPortfolio() {
+		console.log(process.env.REACT_APP_API_DOMAIN + "getPortfolioTokens");
+		return axios
+			.get(process.env.REACT_APP_API_DOMAIN + "getPortfolioTokens")
+			.then((response) => {
+				let metadata = response.data;
+				return metadata;
+			})
+			.catch((error) => {
+				return "error";
+			});
+	}
 }
 
 export default new DataService();

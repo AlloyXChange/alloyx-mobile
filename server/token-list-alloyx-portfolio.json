@@ -1,0 +1,40 @@
+{
+	"name": "AlloyX",
+	"tokens": [
+		{
+			"address": "0x24985bDE88F22AbeEc605071efe04B22091fE1d5",
+			"name": "Fintech Innovation",
+			"symbol": "FNTK",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/fntk.png",
+
+			"balance": "4200",
+			"converted_balance": "6767.04"
+		}
+	],
+	"reward": [
+		{
+			"address": "0x24985bDE88F22AbeEc605071efe04B22091fE1d5",
+			"name": "AlloyX Utility Token",
+			"symbol": "ALYX",
+			"chainId": 44787,
+			"network": "celo",
+			"isPrimary": false,
+
+			"decimals": 18,
+			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/alyx.png",
+
+			"balance": "2338",
+			"converted_balance": "3654.23"
+		}
+	],
+	"version": {
+		"major": 2,
+		"minor": 1,
+		"patch": 1
+	}
+}
