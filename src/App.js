@@ -8,6 +8,8 @@ import PurchaseConfirmation from "./PurchaseConfirmation";
 import {
 	ContractKitProvider,
 	useContractKit,
+	Alfajores,
+	NetworkNames,
 } from "@celo-tools/use-contractkit";
 import "@celo-tools/use-contractkit/lib/styles.css";
 import Checkout from "./Checkout";
@@ -15,10 +17,18 @@ import Portfoliio from "./Portfoliio";
 function WrappedApp() {
 	return (
 		<ContractKitProvider
+			networks={[Alfajores]}
+			network={{
+				name: NetworkNames.Alfajores,
+				rpcUrl: "https://alfajores-forno.celo-testnet.org",
+				graphQl: "https://alfajores-blockscout.celo-testnet.org/graphiql",
+				explorer: "https://alfajores-blockscout.celo-testnet.org",
+				chainId: 44787,
+			}}
 			dapp={{
 				name: "AlloyX",
 				description: "AllyX",
-				url: "https://alloyx.org",
+				url: "http://localhost:3000",
 			}}
 		>
 			<App />
@@ -27,12 +37,12 @@ function WrappedApp() {
 }
 
 function App() {
-	const { address, connect } = useContractKit();
+	const { address, connect, kit, Alfajores } = useContractKit();
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/">
-					<Home connect={connect} address={address} />
+					<Home connect={connect} address={address} kit={kit} />
 				</Route>
 				<Route exact path="/checkout">
 					<Checkout />

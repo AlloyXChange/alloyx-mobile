@@ -7,12 +7,16 @@ import Checkout from "./Checkout";
 import SuccessfulPurchase from "./SuccessfulPurchase";
 import PortfolioToken from "./PortfolioToken";
 import RewardToken from "./RewardToken";
+import chainService from "./services/ChainService";
+
 const { Chart } = require("react-google-charts");
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
-
+		const search = window.location.search;
+		const params = new URLSearchParams(search);
+		const address = params.get("address");
 		this.close = this.close.bind(this);
 
 		this.state = {
@@ -20,6 +24,7 @@ class Login extends Component {
 			tokens: [],
 			rewardTokens: [],
 			rewardViews: [],
+			address: address,
 		};
 	}
 
@@ -32,20 +37,33 @@ class Login extends Component {
 	}
 
 	async loadTokens() {
-		let tokens = await dataService.getPortfolio();
-		this.setState({ tokens: tokens.tokens });
-		this.setState({ rewardTokens: tokens.reward });
+		let allTokens = await dataService.getTokenList();
+		for (let i = 0; i < allTokens.tokens.length; i++) {
+			let t = allTokens.tokens[i];
+			let balanceOf = await chainService.balanceOfToken(
+				t.address,
+				this.state.address
+			);
+			if (balanceOf > 0) {
+				this.state.tokens.push(t);
+			}
 
-		let views = this.state.tokens.map((token) => (
+			console.log(t);
+			console.log(balanceOf);
+		}
+
+		let tokenViews = this.state.tokens.map((token) => (
 			<PortfolioToken data={token} key={token.name} openCard={this.open} />
 		));
+		this.setState({ tokenViews: tokenViews });
+
+		let tokens = await dataService.getPortfolio();
+		this.setState({ rewardTokens: tokens.reward });
 
 		let rewardViews = this.state.rewardTokens.map((token) => (
 			<RewardToken data={token} key={token.name} openCard={this.open} />
 		));
 		this.setState({ rewardViews: rewardViews });
-
-		this.setState({ tokenViews: views });
 	}
 
 	render() {

@@ -18,9 +18,7 @@ class TokenCard extends Component {
 		};
 	}
 
-	componentDidMount() {
-		console.log(this.state.tokenData);
-	}
+	componentDidMount() {}
 
 	selectCard(e) {
 		e.preventDefault();

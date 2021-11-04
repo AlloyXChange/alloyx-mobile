@@ -4,15 +4,34 @@ import dataService from "./services/DataService";
 import { withRouter } from "react-router-dom";
 import success from "./assets/success.png";
 import closeButton from "./assets/closeButton.png";
+import ChainService from "./services/ChainService";
 
 class SuccessfulPurchase extends Component {
 	constructor(props) {
 		super(props);
 		this.checkout = this.checkout.bind(this);
 
-		this.state = {};
+		this.state = {
+			totalPurchased: this.props.tokensPurchased,
+			tokenAddress: this.props.token.address,
+			address: this.props.address,
+			balance: 0,
+		};
 	}
 
+	componentDidMount() {
+		this.loadToken();
+	}
+
+	async loadToken() {
+		if (this.state.tokenAddress) {
+			let balanceOf = await ChainService.balanceOfToken(
+				this.state.tokenAddress,
+				this.state.address
+			);
+			this.setState({ balance: balanceOf });
+		}
+	}
 	checkout() {
 		window.location.href = "/portfolio";
 	}
@@ -32,11 +51,11 @@ class SuccessfulPurchase extends Component {
 							</tr>
 							<tr>
 								<td class="successResults">
-									You added 1,000 Fintech Tokens <p></p>
-									You invested 1,611.20 cUSD
+									You added {this.state.totalPurchased} Fintech Tokens <p></p>
+									You invested {this.state.totalPurchased} cUSD
 									<p></p>
 									<div class="successSummary">
-										You have 4,200 Fintech Tokens
+										You have {this.state.balance} Fintech Tokens
 									</div>
 									<p></p>
 								</td>

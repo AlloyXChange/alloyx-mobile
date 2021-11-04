@@ -2,15 +2,26 @@ import React, { Component } from "react";
 import { Container, Form, Modal, Button } from "react-bootstrap";
 import logo from "./simpleLogo.png";
 import dataService from "./services/DataService";
+import chainService from "./services/ChainService";
+
 import { withRouter } from "react-router-dom";
 import TokenCard from "./TokenCard";
 import Checkout from "./Checkout";
 import SuccessfulPurchase from "./SuccessfulPurchase";
+import {
+	requestTxSig,
+	waitForSignedTxs,
+	requestAccountAddress,
+	waitForAccountAuth,
+	FeeCurrency,
+	// Ensure that we are importing the functions from dappkit/lib/web
+} from "@celo/dappkit/lib/web";
 const { Chart } = require("react-google-charts");
 
 class Login extends Component {
 	constructor(props) {
 		super(props);
+
 		this.open = this.open.bind(this);
 		this.close = this.close.bind(this);
 		this.submit = this.submit.bind(this);
@@ -18,14 +29,15 @@ class Login extends Component {
 		this.checkout = this.checkout.bind(this);
 		this.startCheckout = this.startCheckout.bind(this);
 		this.goToPortfolio = this.goToPortfolio.bind(this);
-
 		this.state = {
 			showModal: false,
 			showCheckout: false,
 			showSuccessModal: false,
+			tokensPurchased: 10,
 
 			connect: this.props.connect,
 			address: this.props.address,
+			kit: this.props.kit,
 			tokens: [],
 			tokenViews: [],
 			selectedToken: {},
@@ -37,15 +49,55 @@ class Login extends Component {
 		this.loadTokens();
 	}
 
+	login = async () => {
+		console.log("entering login");
+		// A string you can pass to DAppKit, that you can use to listen to the response for that request
+		const requestId = "login";
+
+		// A string that will be displayed to the user, indicating the DApp requesting access/signature
+		const dappName = "Web DappKit";
+		// Ask the Celo Alfajores Wallet for user info
+		requestAccountAddress({
+			requestId,
+			dappName: dappName,
+			callback: window.location.href,
+		});
+
+		// Wait for the Celo Wallet response
+		try {
+			const dappkitResponse = await waitForAccountAuth(requestId);
+			this.setState({
+				status: "Login succeeded",
+				address: dappkitResponse.address,
+				phoneNumber: dappkitResponse.phoneNumber,
+				loggedIn: true,
+			});
+			// Catch and handle possible timeout errors
+		} catch (error) {
+			console.log(error);
+			this.setState({
+				status: "Login timed out, try again.",
+			});
+		}
+	};
+
 	async loadTokens() {
 		let tokens = await dataService.getTokenList();
 		this.setState({ tokens: tokens.tokens });
-		console.log(this.state.tokens);
 
 		let views = this.state.tokens.map((token) => (
 			<TokenCard data={token} key={token.name} openCard={this.open} />
 		));
 		this.setState({ tokenViews: views });
+
+		if (this.state.address) {
+			let balanceOf = await chainService.balanceOfToken(
+				"0x10e9bc0e75a35c10bc071f9b46e5C279fD951157",
+				this.state.address
+			);
+			console.log(balanceOf);
+			console.log(this.state.address);
+		}
 	}
 	open(data) {
 		this.setState({ selectedToken: data });
@@ -63,7 +115,7 @@ class Login extends Component {
 	}
 
 	goToPortfolio() {
-		window.location.href = "/portfolio";
+		window.location.href = "/portfolio?address=" + this.state.address;
 	}
 
 	checkout() {
@@ -74,12 +126,14 @@ class Login extends Component {
 	connect() {
 		try {
 			this.state.connect();
+			// this.login();
 		} catch (e) {}
 	}
 
-	startCheckout() {
+	startCheckout(purchaseValue) {
 		this.setState({ showCheckout: false });
 		this.setState({ showSuccessModal: true });
+		this.setState({ tokensPurchased: purchaseValue });
 	}
 
 	truncate(str, n) {
@@ -238,6 +292,8 @@ class Login extends Component {
 						<Checkout
 							token={this.state.selectedToken}
 							submit={this.startCheckout}
+							address={this.state.address}
+							kit={this.state.kit}
 						/>
 					</Modal>
 
@@ -248,7 +304,11 @@ class Login extends Component {
 						dialogClassName="modal-container"
 						centered
 					>
-						<SuccessfulPurchase />
+						<SuccessfulPurchase
+							tokensPurchased={this.state.tokensPurchased}
+							token={this.state.selectedToken}
+							address={this.state.address}
+						/>
 					</Modal>
 				</Container>
 			</div>
