@@ -5,8 +5,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 /**
- * @title TokeVault
- * @notice The source network vault that holds all deposits on the source chain. This vault manages deposits and redemptions for source network deposits.
+ * @title Reserve
+ * @notice A Reserve contract used to buy/sell ETF tokens
  */
 contract AlloyXReserve  {
 
@@ -14,11 +14,7 @@ contract AlloyXReserve  {
 	/**
 	 * @dev Constructor sets token that can be received
 	 */
-	constructor(
-
-	) {
-
-	}
+	constructor() {}
 	
 	function swap(uint256 amount, address depositToken, address withdrawToken) external {
 	    ERC20 depositERC20 = ERC20(depositToken);
