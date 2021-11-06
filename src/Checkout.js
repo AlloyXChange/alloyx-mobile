@@ -40,6 +40,7 @@ class Checkout extends Component {
 			etTokenValue: 0,
 			isLoading: false,
 			loadingText: "",
+			closeCheckout: this.props.closeCheckout,
 		};
 	}
 
@@ -73,7 +74,7 @@ class Checkout extends Component {
 			"0x9A99D13a3728Eb3701995fcf91E23213925EA186"
 		);
 		console.log("ALLOWANCE " + currentAllowance);
-		this.setState({ currentAllowance: currentAllowance });
+		this.setState({ currentAllowance: parseInt(currentAllowance) });
 		// this.setState({ stableCoinValue: currentAllowance });
 	}
 
@@ -93,6 +94,7 @@ class Checkout extends Component {
 
 	close() {
 		// window.location.href = "/";
+		this.state.closeCheckout();
 	}
 
 	submit() {
@@ -214,7 +216,7 @@ class Checkout extends Component {
 												<Form.Control
 													className="purchaseInput text-right"
 													type="number"
-													placeholder="0.0"
+													placeholder="0"
 													onChange={this.onStableCoinChange}
 												/>
 											</Form.Group>
@@ -224,13 +226,13 @@ class Checkout extends Component {
 							</Card>
 							<div class="modalButton">
 								<button onClick={this.submit} class="btn-hover color-1">
-									{this.state.currentAllowance >= this.state.stableCoinValue
+									{this.state.currentAllowance >= this.state.stableCoinValue &&
+									this.state.currentAllowance !== 0
 										? "Submit"
 										: "Approve"}
 								</button>
 							</div>
 						</div>
-						<p></p>
 					</Container>
 				</LoadingOverlay>
 			</div>

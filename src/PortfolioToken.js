@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import React, { Component } from "react";
 
 import "bootstrap/dist/css/bootstrap.css";
+import NumberService from "./services/NumberService";
 
 class PortfolioToken extends Component {
 	constructor(props) {
@@ -15,14 +16,12 @@ class PortfolioToken extends Component {
 			logoURI: this.props.data.logoURI,
 			clickHandler: this.props.openCard,
 			tokenData: this.props.data,
-			balance: this.props.data.balance,
-			convertedBalance: this.props.data.converted_balance,
+			balance: this.props.balance,
+			convertedBalance: this.props.balance,
 		};
 	}
 
-	componentDidMount() {
-		console.log(this.state.tokenData);
-	}
+	componentDidMount() {}
 
 	selectCard(e) {
 		e.preventDefault();
@@ -46,9 +45,11 @@ class PortfolioToken extends Component {
 							<div class="portfolioTokenTitle">{this.state.name}</div>
 						</td>
 						<td>
-							<div class="tokenBalance">{this.state.balance}</div>
+							<div class="tokenBalance">
+								{NumberService.formatNumber(this.state.balance)}
+							</div>
 							<div class="portfolioConvertedBalance">
-								CUSD {this.state.convertedBalance}
+								CUSD {NumberService.formatNumber(this.state.convertedBalance)}
 							</div>
 						</td>{" "}
 					</tr>

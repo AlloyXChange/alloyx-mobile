@@ -12,7 +12,7 @@ class NumberService extends Component {
 	}
 
 	formatNumber(number) {
-		let fixRate = 2;
+		let fixRate = 0;
 
 		if (number < 0.0001) {
 			return 0;

@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"address": "0x416FB1cEE05CF78b76c5Cae2437deEb08B774cA3",
+			"address": "0xe5fedfAeCe348B27fbc41baA2ad3D64bC79b82ee",
 			"name": "Emerging sovereign debt",
 			"symbol": "XOFT",
 			"chainId": 44787,
@@ -44,7 +44,7 @@
 			]
 		},
 		{
-			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"address": "0xD69a48896f0C996e3d6df9558B864090e4a42fDE",
 			"name": "Green Energy",
 			"symbol": "GRNY",
 			"chainId": 44787,
@@ -65,8 +65,8 @@
 			]
 		},
 		{
-			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
-			"name": "Plant-based innovation",
+			"address": "0x2411c20cEfE3aAbBF6BaBa1a8f6e500ee2e78915",
+			"name": "Plant-based Innovation",
 			"symbol": "PLNT",
 			"chainId": 44787,
 			"network": "celo",
@@ -86,7 +86,7 @@
 			]
 		},
 		{
-			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"address": "0x14A2F590d428750fCFb81E6cb7Ba92e1Ad403A33",
 			"name": "Space Exploration",
 			"symbol": "RCKT",
 			"chainId": 44787,
@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"address": "0x6D07ede48699BD9daB22A7Cfa0191d1dE03f3a8E",
+			"address": "0x9BDe0c83E237B8b02E544Ab7b6Bf2B205b649CB6",
 			"name": "Cloud Infrastructure",
 			"symbol": "CLDF",
 			"chainId": 44787,

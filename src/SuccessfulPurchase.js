@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import success from "./assets/success.png";
 import closeButton from "./assets/closeButton.png";
 import ChainService from "./services/ChainService";
+import NumberService from "./services/NumberService";
 
 class SuccessfulPurchase extends Component {
 	constructor(props) {
@@ -15,6 +16,7 @@ class SuccessfulPurchase extends Component {
 			totalPurchased: this.props.tokensPurchased,
 			tokenAddress: this.props.token.address,
 			address: this.props.address,
+			tokenData: this.props.token,
 			balance: 0,
 		};
 	}
@@ -33,7 +35,7 @@ class SuccessfulPurchase extends Component {
 		}
 	}
 	checkout() {
-		window.location.href = "/portfolio";
+		window.location.href = "/portfolio?address=" + this.state.address;
 	}
 
 	render() {
@@ -51,11 +53,15 @@ class SuccessfulPurchase extends Component {
 							</tr>
 							<tr>
 								<td class="successResults">
-									You added {this.state.totalPurchased} Fintech Tokens <p></p>
-									You invested {this.state.totalPurchased} cUSD
+									You added{" "}
+									{NumberService.formatNumber(this.state.totalPurchased)}{" "}
+									{this.state.tokenData.symbol} Tokens <p></p>
+									You invested{" "}
+									{NumberService.formatNumber(this.state.totalPurchased)} cUSD
 									<p></p>
 									<div class="successSummary">
-										You have {this.state.balance} Fintech Tokens
+										You have {NumberService.formatNumber(this.state.balance)}{" "}
+										{this.state.tokenData.symbol} Tokens
 									</div>
 									<p></p>
 								</td>
