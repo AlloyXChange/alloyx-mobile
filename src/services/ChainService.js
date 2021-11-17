@@ -96,7 +96,13 @@ class ChainService extends Component {
 		return approveReceipt;
 	}
 
-	async swap(amount, depositToken, withdrawToken, reserveAddress) {
+	async swap(
+		amount,
+		withdrawAmount,
+		depositToken,
+		withdrawToken,
+		reserveAddress
+	) {
 		let signer = new Celo(this.getActiveNetwork());
 		let web3 = await new Web3(this.getActiveNetwork().provider);
 
@@ -106,6 +112,7 @@ class ChainService extends Component {
 		const vaultABI = reserveContract.methods
 			.swap(
 				Web3.utils.toWei(amount, "ether").toString(),
+				Web3.utils.toWei(withdrawAmount, "ether").toString(),
 				depositToken,
 				withdrawToken
 			)

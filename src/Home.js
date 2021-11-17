@@ -9,14 +9,14 @@ import { withRouter } from "react-router-dom";
 import TokenCard from "./TokenCard";
 import Checkout from "./Checkout";
 import SuccessfulPurchase from "./SuccessfulPurchase";
-import {
-	requestTxSig,
-	waitForSignedTxs,
-	requestAccountAddress,
-	waitForAccountAuth,
-	FeeCurrency,
-	// Ensure that we are importing the functions from dappkit/lib/web
-} from "@celo/dappkit/lib/web";
+// import {
+// 	requestTxSig,
+// 	waitForSignedTxs,
+// 	requestAccountAddress,
+// 	waitForAccountAuth,
+// 	FeeCurrency,
+// 	// Ensure that we are importing the functions from dappkit/lib/web
+// } from "@celo/dappkit/lib/web";
 const { Chart } = require("react-google-charts");
 
 class Login extends Component {
@@ -52,37 +52,37 @@ class Login extends Component {
 		this.loadTokens();
 	}
 
-	login = async () => {
-		console.log("entering login");
-		// A string you can pass to DAppKit, that you can use to listen to the response for that request
-		const requestId = "login";
+	// login = async () => {
+	// 	console.log("entering login");
+	// 	// A string you can pass to DAppKit, that you can use to listen to the response for that request
+	// 	const requestId = "login";
 
-		// A string that will be displayed to the user, indicating the DApp requesting access/signature
-		const dappName = "Web DappKit";
-		// Ask the Celo Alfajores Wallet for user info
-		requestAccountAddress({
-			requestId,
-			dappName: dappName,
-			callback: window.location.href,
-		});
+	// 	// A string that will be displayed to the user, indicating the DApp requesting access/signature
+	// 	const dappName = "Web DappKit";
+	// 	// Ask the Celo Alfajores Wallet for user info
+	// 	requestAccountAddress({
+	// 		requestId,
+	// 		dappName: dappName,
+	// 		callback: window.location.href,
+	// 	});
 
-		// Wait for the Celo Wallet response
-		try {
-			const dappkitResponse = await waitForAccountAuth(requestId);
-			this.setState({
-				status: "Login succeeded",
-				address: dappkitResponse.address,
-				phoneNumber: dappkitResponse.phoneNumber,
-				loggedIn: true,
-			});
-			// Catch and handle possible timeout errors
-		} catch (error) {
-			console.log(error);
-			this.setState({
-				status: "Login timed out, try again.",
-			});
-		}
-	};
+	// 	// Wait for the Celo Wallet response
+	// 	try {
+	// 		const dappkitResponse = await waitForAccountAuth(requestId);
+	// 		this.setState({
+	// 			status: "Login succeeded",
+	// 			address: dappkitResponse.address,
+	// 			phoneNumber: dappkitResponse.phoneNumber,
+	// 			loggedIn: true,
+	// 		});
+	// 		// Catch and handle possible timeout errors
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 		this.setState({
+	// 			status: "Login timed out, try again.",
+	// 		});
+	// 	}
+	// };
 
 	async loadTokens() {
 		this.setState({ isLoading: true });
@@ -249,7 +249,7 @@ class Login extends Component {
 											},
 
 											legend: "none",
-											colors: ["#A747F4", "#2FC5C3"],
+											colors: ["#2FC5C3", "#A747F4"],
 											vAxis: {
 												format: "$#.###",
 												minorGridlines: { count: 0 },
@@ -292,7 +292,9 @@ class Login extends Component {
 												<div class="modalMarket">Net Asset Value (NAV)</div>
 											</td>{" "}
 											<td class="modalCell">
-												<div class="modalMarketValue">$1.25</div>
+												<div class="modalMarketValue">
+													{this.state.selectedToken.nav}
+												</div>
 											</td>
 										</tr>
 									</table>
@@ -307,7 +309,9 @@ class Login extends Component {
 												<div class="modalMarket">Market Value</div>
 											</td>{" "}
 											<td class="modalCell">
-												<div class="modalMarketValue">$1.25</div>
+												<div class="modalMarketValue">
+													{this.state.selectedToken.market}
+												</div>
 											</td>
 										</tr>
 									</table>

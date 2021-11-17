@@ -37,7 +37,7 @@ class Login extends Component {
 	}
 
 	close() {
-		window.location.href = "/";
+		window.location.href = "/home";
 	}
 
 	async loadTokens() {
@@ -53,12 +53,10 @@ class Login extends Component {
 			);
 			if (balanceOf > 0) {
 				this.state.tokens.push(t);
-				balances[t.address] = parseInt(balanceOf);
-				console.log(balanceOf);
-				console.log(this.state.address);
-				console.log(t.address);
+				balances[t.address] = parseFloat(balanceOf);
 			}
-			totalBalance += parseInt(balanceOf);
+			let fixMarketPrice = t.market.replace("$", "");
+			totalBalance += parseFloat(balanceOf / parseFloat(fixMarketPrice));
 		}
 		let tokenViews = this.state.tokens.map((token) => (
 			<PortfolioToken
@@ -66,6 +64,7 @@ class Login extends Component {
 				key={token.name}
 				openCard={this.open}
 				balance={balances[token.address]}
+				marketPrice={token.market}
 			/>
 		));
 		this.setState({ tokenViews: tokenViews });
@@ -77,8 +76,17 @@ class Login extends Component {
 			<RewardToken data={token} key={token.name} openCard={this.open} />
 		));
 		this.setState({ rewardViews: rewardViews });
-		totalBalance += parseInt(this.state.rewardTokens[0].converted_balance);
+		// totalBalance += parseInt(this.state.rewardTokens[0].converted_balance);
 		this.setState({ cUSDBalance: parseInt(totalBalance) });
+		let atPercent =
+			NumberService.formatNumber(100 * (2202.16 / totalBalance)).toString() +
+			"%";
+		this.setState({ allTimePercent: atPercent });
+
+		let payments =
+			NumberService.formatNumber(100 * (1870.1 / totalBalance)).toString() +
+			"%";
+		this.setState({ allTimePaymentPercent: payments });
 		this.setState({ isLoading: false });
 	}
 
@@ -121,7 +129,9 @@ class Login extends Component {
 									<table class="portfolioAllTimeTable">
 										<tr>
 											<td>
-												<div class="portfolioAlltime">+2,452.06 (37.7%) </div>
+												<div class="portfolioAlltime">
+													+2,202.16 ({this.state.allTimePercent}){" "}
+												</div>
 											</td>
 											<td class="portfolioBalanceCell">
 												<div class="portfolioAllTimeText"> ALL TIME</div>
@@ -133,7 +143,8 @@ class Login extends Component {
 										<tr>
 											<td>
 												<div class="portfolioPayments">
-													Payments: 1,870.00 CUSD (+18.9%){" "}
+													Payments: 1,870.10 CUSD (
+													{this.state.allTimePaymentPercent}){" "}
 												</div>
 											</td>
 										</tr>
@@ -168,7 +179,6 @@ class Login extends Component {
 									colors: ["#A747F4", "#2FC5C3"],
 									vAxis: {
 										format: "$#.###",
-										minorGridlines: { count: 0 },
 										textStyle: {
 											color: "transparent",
 											opacity: 0,
@@ -177,20 +187,17 @@ class Login extends Component {
 											color: "transparent",
 											opacity: 0,
 										},
-										baselineColor: "#FFFFFF",
+										format: "#FFFFFF",
 									},
 									hAxis: {
-										minorGridlines: { count: 0 },
-
 										textStyle: {
 											color: "#FFFFFF",
 											opacity: 0.5,
 										},
 										gridlines: {
-											color: "transparent",
-											opacity: 0,
+											color: "#FFFFFF",
+											opacity: 1,
 										},
-										baselineColor: "none",
 									},
 									backgroundColor: "transparent",
 								}}

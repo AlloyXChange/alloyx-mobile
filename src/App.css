@@ -220,7 +220,7 @@ modal-backdrop {
 
 .modalDetails {
 	text-align: center;
-	width: 350px;
+	width: 100%;
 	padding-left: 20px;
 	padding-right: 20px;
 }

@@ -16,7 +16,7 @@ contract AlloyXReserve  {
 	 */
 	constructor() {}
 	
-	function swap(uint256 amount, address depositToken, address withdrawToken) external {
+	function swap(uint256 amount,uint256 withdrawAmount, address depositToken, address withdrawToken) external {
 	    ERC20 depositERC20 = ERC20(depositToken);
 	    ERC20 withdrawERC20 = ERC20(withdrawToken);
 	    
@@ -24,8 +24,8 @@ contract AlloyXReserve  {
 
 		depositERC20.transferFrom(from, address(this), amount);
 
-		withdrawERC20.approve(from, amount);
-		withdrawERC20.transfer(from, amount);
+		withdrawERC20.approve(from, withdrawAmount);
+		withdrawERC20.transfer(from, withdrawAmount);
 	}
 
 }

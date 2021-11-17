@@ -1,9 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import PendingPurchase from "./PendingPurchase";
-import PurchaseConfirmation from "./PurchaseConfirmation";
 
 import {
 	ContractKitProvider,
@@ -12,7 +9,6 @@ import {
 	NetworkNames,
 } from "@celo-tools/use-contractkit";
 import "@celo-tools/use-contractkit/lib/styles.css";
-import Checkout from "./Checkout";
 import Portfoliio from "./Portfoliio";
 import Tutorial from "./Tutorial";
 function WrappedApp() {

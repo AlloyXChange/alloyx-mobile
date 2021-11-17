@@ -12,7 +12,7 @@ class DataService extends Component {
 	async getTokenList() {
 		console.log(process.env.REACT_APP_API_DOMAIN + "getAlloyXTokens");
 		return axios
-			.get(process.env.REACT_APP_API_DOMAIN + "getAlloyXTokens")
+			.get(process.env.REACT_APP_API_DOMAIN + "getAlloyXTokens?t=1")
 			.then((response) => {
 				let metadata = response.data;
 				return metadata;

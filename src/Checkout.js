@@ -33,18 +33,21 @@ class Checkout extends Component {
 			onCheckout: this.props.submit,
 			address: this.props.address,
 			kit: this.props.kit,
+			marketPrice: this.props.token.market,
 			showModal: false,
 			cUSDBalance: 0,
 			currentAllowance: 0,
 			stableCoinValue: 0,
 			etTokenValue: 0,
 			isLoading: false,
+			marketValue: 0,
 			loadingText: "",
 			closeCheckout: this.props.closeCheckout,
 		};
 	}
 
 	componentDidMount() {
+		// alert(this.state.marketPrice);
 		this.loadBalances();
 		this.loadApproval();
 	}
@@ -57,7 +60,7 @@ class Checkout extends Component {
 
 		let reserveBalance = await chainService.balanceOfToken(
 			this.state.tokenAddress,
-			"0x1d7a0f81B4b1116F11df1680277cFcEd4F09B496"
+			"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8"
 		);
 
 		console.log("reserve balance" + reserveBalance);
@@ -70,7 +73,7 @@ class Checkout extends Component {
 	async loadApproval() {
 		let currentAllowance = await chainService.getAllowance(
 			this.state.address,
-			"0x1d7a0f81B4b1116F11df1680277cFcEd4F09B496",
+			"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8",
 			"0x9A99D13a3728Eb3701995fcf91E23213925EA186"
 		);
 		console.log("ALLOWANCE " + currentAllowance);
@@ -80,8 +83,10 @@ class Checkout extends Component {
 
 	onStableCoinChange(e) {
 		const re = /^[0-9\b]+$/;
+		let fixMarketPrice = this.state.marketPrice.replace("$", "");
 		if (e.target.value === "" || re.test(e.target.value)) {
 			this.setState({ stableCoinValue: e.target.value });
+			this.setState({ marketValue: e.target.value * fixMarketPrice });
 		}
 	}
 
@@ -106,12 +111,13 @@ class Checkout extends Component {
 			if (this.state.currentAllowance >= this.state.stableCoinValue) {
 				this.setState({ isLoading: true });
 				this.setState({ loadingText: "Purchasing Tokens" });
-
+				// alert(this.state.marketValue);
 				let receipt = await ChainService.swap(
-					this.state.stableCoinValue,
+					this.state.stableCoinValue.toString(),
+					this.state.marketValue.toString(),
 					"0x9a99d13a3728eb3701995fcf91e23213925ea186",
 					this.state.tokenAddress,
-					"0x1d7a0f81B4b1116F11df1680277cFcEd4F09B496"
+					"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8"
 				);
 				this.state.onCheckout(this.state.stableCoinValue);
 				this.setState({ isLoading: false });
@@ -120,7 +126,7 @@ class Checkout extends Component {
 				this.setState({ loadingText: "Approving Token Transfer" });
 
 				let receipt = await ChainService.approveReserve(
-					"0x1d7a0f81B4b1116F11df1680277cFcEd4F09B496",
+					"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8",
 					"0x9A99D13a3728Eb3701995fcf91E23213925EA186",
 					this.state.stableCoinValue
 				);
@@ -178,7 +184,7 @@ class Checkout extends Component {
 													className="purchaseInput"
 													type="number"
 													placeholder="0.0"
-													value={this.state.stableCoinValue}
+													value={this.state.marketValue}
 													disabled={true}
 												/>
 											</Form.Group>

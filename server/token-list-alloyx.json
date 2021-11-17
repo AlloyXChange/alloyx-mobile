@@ -2,7 +2,7 @@
 	"name": "AlloyX",
 	"tokens": [
 		{
-			"address": "0xe3D6f73b5635D10198714DC50DB05B3B96CeD3c4",
+			"address": "0x18d3EfDDa5241Eab37C7704F4Fe97AaEf9A140BA",
 			"name": "Fintech Innovation",
 			"symbol": "FNTK",
 			"chainId": 44787,
@@ -11,8 +11,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/fntk.png",
-			"nav": "$1.24",
-			"market": "$2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"address": "0xe5fedfAeCe348B27fbc41baA2ad3D64bC79b82ee",
+			"address": "0x064D9608cA56F2cE9B4066cf0299c4CE5D8C5674",
 			"name": "Emerging sovereign debt",
 			"symbol": "XOFT",
 			"chainId": 44787,
@@ -32,8 +32,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/xoft.png",
-			"nav": "$1.24",
-			"market": "$2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],
@@ -44,7 +44,7 @@
 			]
 		},
 		{
-			"address": "0xD69a48896f0C996e3d6df9558B864090e4a42fDE",
+			"address": "0xD243A63c996042436ec1Ed81dFF6bC1d142925Db",
 			"name": "Green Energy",
 			"symbol": "GRNY",
 			"chainId": 44787,
@@ -53,8 +53,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/grny.png",
-			"nav": "$1.24",
-			"market": "$2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],
@@ -65,7 +65,7 @@
 			]
 		},
 		{
-			"address": "0x2411c20cEfE3aAbBF6BaBa1a8f6e500ee2e78915",
+			"address": "0x3C8C26ce26c3b4360fb6Eb6c4111232Af8e4e7Cc",
 			"name": "Plant-based Innovation",
 			"symbol": "PLNT",
 			"chainId": 44787,
@@ -74,8 +74,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/plnt.png",
-			"nav": "$1.24",
-			"market": "$2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],
@@ -86,7 +86,7 @@
 			]
 		},
 		{
-			"address": "0x14A2F590d428750fCFb81E6cb7Ba92e1Ad403A33",
+			"address": "0x2D663c7E731f33FFB1d4398BdCc5c394554CACE9",
 			"name": "Space Exploration",
 			"symbol": "RCKT",
 			"chainId": 44787,
@@ -95,8 +95,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/rckt.png",
-			"nav": "$1.24",
-			"market": "$2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],
@@ -107,7 +107,7 @@
 			]
 		},
 		{
-			"address": "0x9BDe0c83E237B8b02E544Ab7b6Bf2B205b649CB6",
+			"address": "0x00BA0D3047515BAB5fD739ED9558F8a5DAfee903",
 			"name": "Cloud Infrastructure",
 			"symbol": "CLDF",
 			"chainId": 44787,
@@ -116,8 +116,8 @@
 
 			"decimals": 18,
 			"logoURI": "https://storage.googleapis.com/cauris_deep_dive/cldf.png",
-			"nav": "1.24",
-			"market": "2.34",
+			"nav": "$1.60",
+			"market": "$1.50",
 			"performance": [
 				["Month", "NAV", "Market"],
 				["Jan", 1, 1.2],

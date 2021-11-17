@@ -32,6 +32,10 @@ class SuccessfulPurchase extends Component {
 				this.state.address
 			);
 			this.setState({ balance: balanceOf });
+			let fixMarketPrice = this.state.tokenData.market.replace("$", "");
+			this.setState({
+				marketPrice: parseFloat(fixMarketPrice) * this.state.totalPurchased,
+			});
 		}
 	}
 	checkout() {
@@ -53,8 +57,7 @@ class SuccessfulPurchase extends Component {
 							</tr>
 							<tr>
 								<td class="successResults">
-									You added{" "}
-									{NumberService.formatNumber(this.state.totalPurchased)}{" "}
+									You added {NumberService.formatNumber(this.state.marketPrice)}{" "}
 									{this.state.tokenData.symbol} Tokens <p></p>
 									You invested{" "}
 									{NumberService.formatNumber(this.state.totalPurchased)} cUSD

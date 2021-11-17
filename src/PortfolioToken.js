@@ -17,11 +17,16 @@ class PortfolioToken extends Component {
 			clickHandler: this.props.openCard,
 			tokenData: this.props.data,
 			balance: this.props.balance,
-			convertedBalance: this.props.balance,
+			marketPrice: this.props.marketPrice.replace("$", ""),
 		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.setState({
+			convertedBalance:
+				parseFloat(this.state.balance) / parseFloat(this.state.marketPrice),
+		});
+	}
 
 	selectCard(e) {
 		e.preventDefault();
