@@ -9,6 +9,8 @@ import { withRouter } from "react-router-dom";
 import TokenCard from "./TokenCard";
 import Checkout from "./Checkout";
 import SuccessfulPurchase from "./SuccessfulPurchase";
+import { useContractKit, WalletTypes } from "@celo-tools/use-contractkit";
+
 // import {
 // 	requestTxSig,
 // 	waitForSignedTxs,

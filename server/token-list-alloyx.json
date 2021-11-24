@@ -4,7 +4,7 @@
 		{
 			"address": "0x18d3EfDDa5241Eab37C7704F4Fe97AaEf9A140BA",
 			"name": "Fintech Innovation",
-			"symbol": "FNTK",
+			"symbol": "cFNTK",
 			"chainId": 44787,
 			"network": "celo",
 			"isPrimary": false,

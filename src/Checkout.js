@@ -54,7 +54,7 @@ class Checkout extends Component {
 
 	async loadBalances() {
 		let balanceOf = await chainService.balanceOfToken(
-			"0x9A99D13a3728Eb3701995fcf91E23213925EA186",
+			"0xa7fc6f216d74a30cf018ecb6e52ae6706faec66a",
 			this.state.address
 		);
 
@@ -74,7 +74,7 @@ class Checkout extends Component {
 		let currentAllowance = await chainService.getAllowance(
 			this.state.address,
 			"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8",
-			"0x9A99D13a3728Eb3701995fcf91E23213925EA186"
+			"0xa7fc6f216d74a30cf018ecb6e52ae6706faec66a"
 		);
 		console.log("ALLOWANCE " + currentAllowance);
 		this.setState({ currentAllowance: parseInt(currentAllowance) });
@@ -115,7 +115,7 @@ class Checkout extends Component {
 				let receipt = await ChainService.swap(
 					this.state.stableCoinValue.toString(),
 					this.state.marketValue.toString(),
-					"0x9a99d13a3728eb3701995fcf91e23213925ea186",
+					"0xa7fc6f216d74a30cf018ecb6e52ae6706faec66a",
 					this.state.tokenAddress,
 					"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8"
 				);
@@ -127,7 +127,7 @@ class Checkout extends Component {
 
 				let receipt = await ChainService.approveReserve(
 					"0x471B32Ef053ac12a91bc44655744C22Ec8fC37a8",
-					"0x9A99D13a3728Eb3701995fcf91E23213925EA186",
+					"0xa7fc6f216d74a30cf018ecb6e52ae6706faec66a",
 					this.state.stableCoinValue
 				);
 				this.loadBalances();
